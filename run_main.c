@@ -1,0 +1,57 @@
+/*
+** EPITECH PROJECT, 2019
+** run_main
+** File description:
+** run_main
+*/
+
+#include "include/frambuffer.h"
+#include "include/my.h"
+
+int main(int ac, char **av)
+{
+    sfEvent event;
+    link_t *link = NULL;
+    ui_t *ui_struct = NULL;
+
+    for (int help_int = draw_help(ac, av); help_int == 1;)
+        return (0);
+    link = malloc(sizeof(link_t));
+    ui_struct = malloc(sizeof(ui_t));
+    main_extend_2(ui_struct, link);
+    while (sfRenderWindow_isOpen(ui_struct->window)) {
+        while (sfRenderWindow_pollEvent(ui_struct->window, &event))
+            analyse_events(ui_struct->window, event, link, ui_struct);
+        main_extend_1(ui_struct);
+        define_link(link, ui_struct);
+        extend_window_open(ui_struct->window, ui_struct, event);
+    }
+    destroy_obj1(ui_struct);
+    return EXIT_SUCCESS;
+}
+
+void extend_window_open(sfRenderWindow *window, ui_t *ui_struct, sfEvent event)
+{
+    sfRenderWindow_display(window);
+}
+
+int draw_help(int ac, char **av)
+{
+    if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h') {
+        my_putstr("Finite runner created with CSFML.\n");
+        my_putstr("");
+        my_putstr("USAGE\n");
+        my_putstr("\t./my_runner map.txt\n");
+        my_putstr("");
+        my_putstr("");
+        my_putstr("OPTIONS\n");
+        my_putstr("\t-i\t\tlaunch the game in infinity mode.\n");
+        my_putstr("\t-h\t\tprint the usage and quit\n");
+        my_putstr("");
+        my_putstr("USER INTERACTIONS\n");
+        my_putstr("\tSPACE_KEY\t\tjump.\n");
+        return (1);
+    } else {
+        return (0);
+    }
+}
