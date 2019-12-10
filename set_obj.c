@@ -23,6 +23,7 @@ void create_object(int nbr_of_obj, obj_t *obj_struct, ui_t *ui,
         sfRenderWindow_drawSprite(ui->window, obj_struct->sprite_obj, NULL);
         obj_struct->next = malloc(sizeof(obj_t));
     }
+    update_tile_y(map_struct, ui);
 }
 
 void create_obj_1(int nbr_of_obj, obj_t *obj_struct)
@@ -48,7 +49,9 @@ void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct)
 {
     obj_struct = malloc(sizeof(obj_t));
     ui->pos_moins += 1;
+    init_tile_y(map_struct);
     for (int y = 0; y != 8; y++) {
+        map_struct->y_tile++;
         ui->x_pos = 0 - ui->move_pos;
         for (int x = 0; map_struct->map[y][x] != '\0'; x++) {
             map_struct->x = x;
@@ -56,6 +59,7 @@ void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct)
             get_map(map_struct, ui, obj_struct);
         }
     }
+    map_struct->y_tile = 0;
     ui->move_pos = ui->move_pos + 8;
     ui->y_pos = 0;
 }

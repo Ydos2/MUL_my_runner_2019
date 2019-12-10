@@ -29,7 +29,7 @@ int main(int ac, char **av)
             analyse_events(ui_struct->window, event, link, ui_struct);
         main_extend_1(ui_struct);
         set_map(map_struct, ui_struct, obj_struct);
-        define_link(link, ui_struct);
+        define_link(link, ui_struct, map_struct);
         extend_window_open(ui_struct->window, ui_struct, event);
     }
     destroy_obj1(ui_struct, map_struct, link, obj_struct);

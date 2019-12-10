@@ -47,6 +47,15 @@ typedef struct map {
     char car;
     int x;
     int y;
+    int y_tile;
+    int line_1;
+    int line_2;
+    int line_3;
+    int line_4;
+    int line_5;
+    int line_6;
+    int line_7;
+    int line_8;
 } map_t;
 
 typedef struct link {
@@ -56,6 +65,8 @@ typedef struct link {
     int is_death;
     int is_jump;
     int is_jump_actu;
+    int y_pos;
+    int gravity;
     sfIntRect rect;
     sfVector2f position_link;
 } link_t;
@@ -68,6 +79,7 @@ typedef struct ui {
     int y_pos;
     int move_pos;
     int pos_moins;
+    int y_pos_player;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -100,7 +112,7 @@ void start_map(char **argv, map_t *map_struct);
 void create_clock_func(ui_t *ui_struct);
 void destroy_obj1(ui_t *ui, map_t *map_struct, link_t *link, obj_t *obj);
 
-void define_link(link_t *link, ui_t *ui_struct);
+void define_link(link_t *link, ui_t *ui_struct, map_t *map_struct);
 void draw_link(ui_t *ui, link_t *link);
 void intance_jump(link_t *link);
 
@@ -121,4 +133,12 @@ void create_object(int nbr_of_obj, obj_t *obj_struct, ui_t *ui,
     map_t *map_struct);
 void create_obj_1(int nbr_of_obj, obj_t *obj_struct);
 void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
+
+void init_tile_y(map_t *map_struct);
+void update_tile_y(map_t *map_struct, ui_t *ui);
+
+void initialise_gravity(link_t *link, map_t *map_struct);
+void get_link_pos(link_t *link);
+int set_actu_tile(int i, map_t *map_struct);
+void apply_gravity(link_t *link);
 #endif /*FRAMBUFFER_H_ */
