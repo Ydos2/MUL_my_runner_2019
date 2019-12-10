@@ -30,6 +30,25 @@
 #ifndef FRAMEBUFFER_H_
 #define FRAMEBUFFER_H_
 
+typedef struct obj {
+    sfSprite* sprite_obj;
+    sfTexture* texture_obj;
+    sfVector2f pos_obj;
+    sfIntRect rect_obj;
+    struct obj * next;
+} obj_t;
+
+typedef struct map {
+    char **map;
+    int j;
+    int i;
+    int k;
+    int fd;
+    char car;
+    int x;
+    int y;
+} map_t;
+
 typedef struct link {
     int health;
     int offset;
@@ -45,6 +64,10 @@ typedef struct ui {
     int sound_die;
     int score;
     float seconds;
+    int x_pos;
+    int y_pos;
+    int move_pos;
+    int pos_moins;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -71,8 +94,11 @@ void manage_key_click_start(sfKeyEvent event,
 void main_extend_1(ui_t *ui_struct);
 void main_extend_2(ui_t *ui_struct, link_t *link);
 
+void initialise_map(char **argv, map_t *map_struct);
+void start_map(char **argv, map_t *map_struct);
+
 void create_clock_func(ui_t *ui_struct);
-void destroy_obj1(ui_t *ui);
+void destroy_obj1(ui_t *ui, map_t *map_struct, link_t *link, obj_t *obj);
 
 void define_link(link_t *link, ui_t *ui_struct);
 void draw_link(ui_t *ui, link_t *link);
@@ -85,4 +111,14 @@ void draw_background_down(ui_t *ui);
 void move_rect_link(link_t *link);
 void move_rect_link_jump(link_t *link);
 void move_rect_link_die(link_t *link);
+
+void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
+char *my_strdupp(char const *src);
+int my_strlenn(char const *str);
+char *my_strcpyy(char *dest, char const *src);
+
+void create_object(int nbr_of_obj, obj_t *obj_struct, ui_t *ui,
+    map_t *map_struct);
+void create_obj_1(int nbr_of_obj, obj_t *obj_struct);
+void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 #endif /*FRAMBUFFER_H_ */

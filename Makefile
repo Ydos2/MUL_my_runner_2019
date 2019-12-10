@@ -17,7 +17,9 @@ SRC		=	background_draw.c	\
 			run_event.c			\
 			run_main.c			\
 			run_sound.c			\
-			run_tools_1.c
+			run_tools_1.c		\
+			create_map.c		\
+			set_obj.c
 
 SRC_TESTS	=	criterion.c
 
@@ -28,7 +30,9 @@ SRC_O	=	background_draw.o	\
 			run_event.o			\
 			run_main.o			\
 			run_sound.o			\
-			run_tools_1.o
+			run_tools_1.o		\
+			create_map.o		\
+			set_obj.o
 
 COMPIL		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC)
 COMPIL_DEBUG		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC) -g3
@@ -36,7 +40,7 @@ COMPIL_TEST		= gcc $(SRC) -g3 -L $(DIRLIB) $(DIRTEST) --coverage -lcriterion -lm
 EXEC		= my_runner
 EXEC_TEST		= tests_my_runner
 RUN_TESTS	=	./$(EXEC_TEST)
-RUN_VALGRIND	=	valgrind --leak-resolution=high --num-callers=40 --track-origins=yes ./$(EXEC)
+RUN_VALGRIND	=	valgrind --leak-resolution=high --num-callers=40 --track-origins=yes ./$(EXEC) map/map1
 
 COVERAGE	=	gcovr --exclude tests/
 COVERAGE_BRANCH		=	gcovr --exclude tests/ -b

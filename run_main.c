@@ -13,20 +13,26 @@ int main(int ac, char **av)
     sfEvent event;
     link_t *link = NULL;
     ui_t *ui_struct = NULL;
+    map_t *map_struct = NULL;
+    obj_t *obj_struct = NULL;
 
     for (int help_int = draw_help(ac, av); help_int == 1;)
         return (0);
     link = malloc(sizeof(link_t));
     ui_struct = malloc(sizeof(ui_t));
+    map_struct = malloc(sizeof(map_t));
+    obj_struct = malloc(sizeof(obj_t));
     main_extend_2(ui_struct, link);
+    start_map(av, map_struct);
     while (sfRenderWindow_isOpen(ui_struct->window)) {
         while (sfRenderWindow_pollEvent(ui_struct->window, &event))
             analyse_events(ui_struct->window, event, link, ui_struct);
         main_extend_1(ui_struct);
+        set_map(map_struct, ui_struct, obj_struct);
         define_link(link, ui_struct);
         extend_window_open(ui_struct->window, ui_struct, event);
     }
-    destroy_obj1(ui_struct);
+    destroy_obj1(ui_struct, map_struct, link, obj_struct);
     return EXIT_SUCCESS;
 }
 

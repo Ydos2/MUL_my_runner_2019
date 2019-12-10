@@ -10,7 +10,7 @@
 
 void define_link(link_t *link, ui_t *ui_struct)
 {
-    if (ui_struct->seconds > 0.15) {
+    if (ui_struct->seconds > 0.1) {
         if (link->is_jump == 0)
             move_rect_link(link);
         else
@@ -49,18 +49,18 @@ void intance_jump(link_t *link)
     if (link->is_jump == 1 && link->is_jump_actu > 0 &&
             link->is_jump_actu <= 15) {
         link->position_link.x = 100;
-        link->position_link.y += 12;
+        link->position_link.y += 24;
         link->is_jump_actu -= 1;
     }
     if (link->is_jump == 1 && link->is_jump_actu > 15 &&
             link->is_jump_actu <= 30) {
         link->position_link.x = 100;
-        link->position_link.y -= 12;
+        link->position_link.y -= 24;
         link->is_jump_actu -= 1;
     }
     if (link->is_jump == 0) {
         link->position_link.x = 100;
-        link->position_link.y = 785;
+        link->position_link.y = 706;
     }
     if (link->is_jump_actu == 0)
         link->is_jump = 0;

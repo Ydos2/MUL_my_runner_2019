@@ -28,5 +28,7 @@ void main_extend_2(ui_t *ui_struct, link_t *link)
     music_game(ui_struct);
     ui_struct->pos_background_down.x = 0;
     ui_struct->pos_background_down.y = 0;
+    ui_struct->move_pos = 0;
+    link->offset = 0;
     sfRenderWindow_setFramerateLimit(ui_struct->window, 30);
 }

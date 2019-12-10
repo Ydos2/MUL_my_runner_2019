@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <errno.h>
+#include <fcntl.h>
 void my_putchar(char c);
 int my_isneg(int nb);
 int my_put_nbr(int nb);
