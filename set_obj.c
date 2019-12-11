@@ -13,12 +13,17 @@ void create_object(int nbr_of_obj, obj_t *obj_struct, ui_t *ui,
 {
     if (ui->x_pos < -128 || ui->x_pos > 1920) {
     } else {
+        obj_struct->rect_obj.width = 128;
+        obj_struct->rect_obj.height = 128;
+        obj_struct->rect_obj.top = 0;
+        obj_struct->rect_obj.left = 0;
         obj_struct->pos_obj.x = ui->x_pos;
         obj_struct->pos_obj.y = ui->y_pos;
         create_obj_1(nbr_of_obj, obj_struct);
         obj_struct->sprite_obj = sfSprite_create();
         sfSprite_setTexture(obj_struct->sprite_obj, obj_struct->texture_obj,
             sfTrue);
+        sfSprite_setTextureRect(obj_struct->sprite_obj, obj_struct->rect_obj);
         sfSprite_setPosition(obj_struct->sprite_obj, obj_struct->pos_obj);
         sfRenderWindow_drawSprite(ui->window, obj_struct->sprite_obj, NULL);
         obj_struct->next = malloc(sizeof(obj_t));
@@ -43,6 +48,12 @@ void create_obj_1(int nbr_of_obj, obj_t *obj_struct)
     if (nbr_of_obj == 5)
         obj_struct->texture_obj = sfTexture_createFromFile(
                 "./texture/landmine.png", NULL);
+    if (nbr_of_obj == 6)
+        obj_struct->texture_obj = sfTexture_createFromFile(
+                "./texture/blue_rubis.png", NULL);
+    if (nbr_of_obj == 7)
+        obj_struct->texture_obj = sfTexture_createFromFile(
+                "./texture/chest.png", NULL);
 }
 
 void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct)
@@ -76,6 +87,10 @@ void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct)
         create_object(4, obj_struct, ui, map_struct);
     if (map_struct->map[map_struct->y][map_struct->x] == '5')
         create_object(5, obj_struct, ui, map_struct);
+    if (map_struct->map[map_struct->y][map_struct->x] == '6')
+        create_object(6, obj_struct, ui, map_struct);
+    if (map_struct->map[map_struct->y][map_struct->x] == '7')
+        create_object(7, obj_struct, ui, map_struct);
     ui->x_pos += 128;
     if (map_struct->map[map_struct->y][map_struct->x] == '\n') {
         ui->x_pos = 0;

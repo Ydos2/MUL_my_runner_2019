@@ -42,6 +42,5 @@ void set_start_menu(ui_t *ui, link_t *link)
         initialise_var(ui, link);
         ui->play_one = 0;
         ui->menu = 0;
-        ui->start_button_press = 0;
     }
 }

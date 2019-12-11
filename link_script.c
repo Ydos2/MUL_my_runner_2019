@@ -10,6 +10,7 @@
 
 void define_link(link_t *link, ui_t *ui_struct, map_t *map_struct)
 {
+    ui_struct->score++;
     if (ui_struct->seconds > 0.1) {
         if (link->is_jump == 0)
             move_rect_link(link);

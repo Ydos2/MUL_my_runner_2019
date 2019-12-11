@@ -31,6 +31,7 @@ void start_map(char **argv, map_t *map_struct)
 {
     char tmp[300];
 
+    map_struct->y_tile = 0;
     map_struct->j = 0;
     map_struct->i = 0;
     map_struct->k = 0;

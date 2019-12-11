@@ -24,7 +24,8 @@ SRC		=	background_draw.c	\
 			gravity.c			\
 			menu.c				\
 			sound_manager.c		\
-			draw_ui.c
+			draw_ui.c			\
+			score.c
 
 SRC_TESTS	=	criterion.c
 
@@ -42,7 +43,8 @@ SRC_O	=	background_draw.o	\
 			gravity.o			\
 			menu.o				\
 			sound_manager.o		\
-			draw_ui.o
+			draw_ui.o			\
+			score.o
 
 COMPIL		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC)
 COMPIL_DEBUG		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC) -g3

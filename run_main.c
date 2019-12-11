@@ -33,6 +33,7 @@ int main(int ac, char **av)
             define_link(link, ui_struct, map_struct);
         else
             set_menu(ui_struct, link);
+        set_score(ui_struct);
         extend_window_open(ui_struct->window, ui_struct, event);
         if (ui_struct->quit == 1)
             break;

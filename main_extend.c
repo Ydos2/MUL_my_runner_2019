@@ -43,5 +43,10 @@ void initialise_var(ui_t *ui_struct, link_t *link)
     link->offset = 0;
     link->position_link.x = 100;
     link->position_link.y = 768;
+    link->is_jump = 0;
+    link->is_jump_actu = 0;
+    ui_struct->score = 0;
+    ui_struct->start_button_press = 0;
+    ui_struct->pos_background_up.x = 0;
     sound_start();
 }

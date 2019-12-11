@@ -157,9 +157,11 @@ void set_start_menu(ui_t *ui, link_t *link);
 void sound_start(void);
 void sound_die(void);
 
-void draw_ui_score_one(sfRenderWindow *window);
 void draw_ui_gameover(sfRenderWindow *window);
 void draw_ui_start(sfRenderWindow *window);
 void draw_button_play(sfRenderWindow *window);
 void draw_button_quit(sfRenderWindow *window);
+
+void draw_ui_score_one(sfRenderWindow *window);
+void set_score(ui_t *ui);
 #endif /*FRAMBUFFER_H_ */
