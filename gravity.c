@@ -8,20 +8,23 @@
 #include "include/frambuffer.h"
 #include "include/my.h"
 
-void initialise_gravity(link_t *link, map_t *map_struct)
+void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct)
 {
     int actu_tile = 0;
     int gravity_actu = 1;
 
     get_link_pos(link);
     for (int i = 0; i != 8; i++) {
+        if (link->y_pos == 9)
+            set_lose(link, ui_struct);
+        if (link->float_jump == 1)
+            break;
         actu_tile = set_actu_tile(i, map_struct);
         if (link->y_pos == actu_tile-2) {
             gravity_actu = 0;
             break;
         }
     }
-    printf("link_pos : %d actu_tile = %d\n", link->y_pos, actu_tile-2);
     if (gravity_actu == 1)
         link->gravity = 1;
     else
@@ -41,6 +44,11 @@ void get_link_pos(link_t *link)
     for (; link->position_link.y == 768 && i == 0; link->y_pos = 6, i = 1);
     for (; link->position_link.y == 896 && i == 0; link->y_pos = 7, i = 1);
     for (; link->position_link.y == 1024 && i == 0; link->y_pos = 8, i = 1);
+    for (; link->position_link.y >= 1152 && i == 0; link->y_pos = 9, i = 1);
+    if (i == 0)
+        link->float_jump = 1;
+    else
+        link->float_jump = 0;
 }
 
 int set_actu_tile(int i, map_t *map_struct)

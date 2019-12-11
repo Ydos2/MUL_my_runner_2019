@@ -15,6 +15,9 @@ void analyse_events(sfRenderWindow *window, sfEvent event,
     case sfEvtKeyReleased:
         manage_key_space(event.key, link, ui_struct);
         break;
+    case sfEvtMouseButtonPressed:
+        manage_mouse_click_start(event.mouseButton, ui_struct);
+        break;
     case sfEvtClosed:
         sfRenderWindow_close(window);
         break;
@@ -34,4 +37,16 @@ void manage_key_space(sfKeyEvent event, link_t *link,
                     ui_t *ui_struct)
 {
     link->is_jump = 1;
+}
+
+void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct)
+{
+    if (event.button == sfMouseLeft) {
+        if (event.x <= 1000 && event.x >= 900 &&
+        event.y <= 700 && event.y > 600)
+            ui_struct->start_button_press = 1;
+        if (event.x <= 1000 && event.x >= 900 &&
+        event.y <= 850 && event.y > 750)
+            ui_struct->quit = 1;
+    }
 }

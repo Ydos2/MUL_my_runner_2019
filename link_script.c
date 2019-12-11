@@ -17,7 +17,7 @@ void define_link(link_t *link, ui_t *ui_struct, map_t *map_struct)
             move_rect_link_jump(link);
     }
     intance_jump(link);
-    initialise_gravity(link, map_struct);
+    initialise_gravity(link, map_struct, ui_struct);
     apply_gravity(link);
     draw_link(ui_struct, link);
 }
@@ -49,11 +49,11 @@ void intance_jump(link_t *link)
     if (link->is_jump_actu == 0)
         link->is_jump_actu = 30;
     if (link->is_jump == 1 && link->is_jump_actu > 0 &&
-            link->is_jump_actu <= 15) {
+            link->is_jump_actu <= 10) {
         link->position_link.x = 100;
         link->is_jump_actu -= 1;
     }
-    if (link->is_jump == 1 && link->is_jump_actu > 15 &&
+    if (link->is_jump == 1 && link->is_jump_actu > 10 &&
             link->is_jump_actu <= 30) {
         link->position_link.x = 100;
         link->position_link.y -= 32;
@@ -61,4 +61,9 @@ void intance_jump(link_t *link)
     }
     if (link->is_jump_actu == 0)
         link->is_jump = 0;
+}
+
+void set_lose(link_t *link, ui_t *ui_struct)
+{
+    ui_struct->menu = 2;
 }

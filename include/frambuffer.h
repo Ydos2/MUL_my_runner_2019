@@ -67,6 +67,7 @@ typedef struct link {
     int is_jump_actu;
     int y_pos;
     int gravity;
+    int float_jump;
     sfIntRect rect;
     sfVector2f position_link;
 } link_t;
@@ -80,6 +81,10 @@ typedef struct ui {
     int move_pos;
     int pos_moins;
     int y_pos_player;
+    int menu;
+    int quit;
+    int start_button_press;
+    int play_one;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -102,9 +107,11 @@ void manage_key_space(sfKeyEvent event, link_t *link,
                     ui_t *ui_struct);
 void manage_key_click_start(sfKeyEvent event,
                     link_t *link, ui_t *ui_struct);
+void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct);
 
 void main_extend_1(ui_t *ui_struct);
 void main_extend_2(ui_t *ui_struct, link_t *link);
+void initialise_var(ui_t *ui_struct, link_t *link);
 
 void initialise_map(char **argv, map_t *map_struct);
 void start_map(char **argv, map_t *map_struct);
@@ -136,9 +143,23 @@ void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 
 void init_tile_y(map_t *map_struct);
 void update_tile_y(map_t *map_struct, ui_t *ui);
+void set_lose(link_t *link, ui_t *ui_struct);
 
-void initialise_gravity(link_t *link, map_t *map_struct);
+void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct);
 void get_link_pos(link_t *link);
 int set_actu_tile(int i, map_t *map_struct);
 void apply_gravity(link_t *link);
+
+void set_menu(ui_t *ui, link_t *link);
+void set_lose_menu(ui_t *ui, link_t *link);
+void set_start_menu(ui_t *ui, link_t *link);
+
+void sound_start(void);
+void sound_die(void);
+
+void draw_ui_score_one(sfRenderWindow *window);
+void draw_ui_gameover(sfRenderWindow *window);
+void draw_ui_start(sfRenderWindow *window);
+void draw_button_play(sfRenderWindow *window);
+void draw_button_quit(sfRenderWindow *window);
 #endif /*FRAMBUFFER_H_ */

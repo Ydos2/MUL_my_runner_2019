@@ -21,7 +21,10 @@ SRC		=	background_draw.c	\
 			create_map.c		\
 			set_obj.c			\
 			initialise_tile.c	\
-			gravity.c
+			gravity.c			\
+			menu.c				\
+			sound_manager.c		\
+			draw_ui.c
 
 SRC_TESTS	=	criterion.c
 
@@ -36,7 +39,10 @@ SRC_O	=	background_draw.o	\
 			create_map.o		\
 			set_obj.o			\
 			initialise_tile.o	\
-			gravity.o
+			gravity.o			\
+			menu.o				\
+			sound_manager.o		\
+			draw_ui.o
 
 COMPIL		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC)
 COMPIL_DEBUG		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC) -g3
