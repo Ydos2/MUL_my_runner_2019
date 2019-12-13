@@ -36,8 +36,10 @@ void manage_key_click_start(sfKeyEvent event,
 void manage_key_space(sfKeyEvent event, link_t *link,
                     ui_t *ui_struct)
 {
-    if (link->gravity == 0)
+    if (link->gravity == 0) {
         link->is_jump = 1;
+        sound_jump(ui_struct);
+    }
 }
 
 void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct)

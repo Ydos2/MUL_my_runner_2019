@@ -20,7 +20,7 @@ void init_tile_y(map_t *map_struct)
     map_struct->line_8 = 0;
 }
 
-void update_tile_y(map_t *map_struct, ui_t *ui)
+void update_tile_y(map_t *map_struct, ui_t *ui, int nbr_of_obj)
 {
     if (ui->x_pos >= 0 && ui->x_pos < 129) {
         if (map_struct->y_tile == 1)
@@ -39,5 +39,11 @@ void update_tile_y(map_t *map_struct, ui_t *ui)
             map_struct->line_7 = 1;
         if (map_struct->y_tile == 8)
             map_struct->line_8 = 1;
+        if (nbr_of_obj == 6)
+            ui->obj_actu = 6;
+        if (nbr_of_obj == 7)
+            ui->win = 1;
+        else
+            ui->win = 0;
     }
 }

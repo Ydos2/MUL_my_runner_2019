@@ -15,8 +15,8 @@ void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct)
 
     get_link_pos(link);
     for (int i = 0; i != 8; i++) {
-        if (link->y_pos == 9)
-            set_lose(link, ui_struct);
+        if (link->y_pos == 9 || link->y_pos == actu_tile-1)
+            set_action(link, ui_struct);
         if (link->float_jump == 1)
             break;
         actu_tile = set_actu_tile(i, map_struct);
@@ -29,6 +29,14 @@ void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct)
         link->gravity = 1;
     else
         link->gravity = 0;
+}
+
+void set_action(link_t *link, ui_t *ui_struct)
+{
+    if (ui_struct->win == 1)
+        set_win(link, ui_struct);
+    else
+        set_lose(link, ui_struct);
 }
 
 void get_link_pos(link_t *link)

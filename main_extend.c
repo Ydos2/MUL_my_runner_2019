@@ -30,7 +30,8 @@ void main_extend_2(ui_t *ui_struct, link_t *link)
         mode, "Link RUN!", sfResize | sfClose, NULL);
     ui_struct->quit = 0;
     ui_struct->menu = 1;
-    music_game(ui_struct);
+    ui_struct->win = 0;
+    ui_struct->play_sound = 1;
     initialise_var(ui_struct, link);
     sfRenderWindow_setFramerateLimit(ui_struct->window, 30);
 }
@@ -48,5 +49,6 @@ void initialise_var(ui_t *ui_struct, link_t *link)
     ui_struct->score = 0;
     ui_struct->start_button_press = 0;
     ui_struct->pos_background_up.x = 0;
-    sound_start();
+    ui_struct->win = 0;
+    sound_start(ui_struct);
 }

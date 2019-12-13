@@ -85,6 +85,9 @@ typedef struct ui {
     int quit;
     int start_button_press;
     int play_one;
+    int play_sound;
+    int win;
+    int obj_actu;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -93,13 +96,17 @@ typedef struct ui {
     sfTime time;
     sfClock *clock;
     sfMusic *music_sound;
+    sfSound *empty_sound;
+    sfSoundBuffer *buffer;
     sfRenderWindow* window;
 } ui_t;
 
-void extend_window_open(sfRenderWindow *window, ui_t *ui_struct, sfEvent event);
+void extend_window_open(ui_t *ui_struct, link_t *link
+    , map_t *map_struct, obj_t *obj_struct);
 int draw_help(int ac, char **av);
 
 void music_game(ui_t *ui_struct);
+void music_title(ui_t *ui_struct);
 
 void analyse_events(sfRenderWindow *window, sfEvent event,
                     link_t *link, ui_t *ui_struct);
@@ -112,6 +119,7 @@ void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct);
 void main_extend_1(ui_t *ui_struct);
 void main_extend_2(ui_t *ui_struct, link_t *link);
 void initialise_var(ui_t *ui_struct, link_t *link);
+void start_script(ui_t *ui, map_t *map_struct, link_t *link, char **av);
 
 void initialise_map(char **argv, map_t *map_struct);
 void start_map(char **argv, map_t *map_struct);
@@ -142,22 +150,29 @@ void create_obj_1(int nbr_of_obj, obj_t *obj_struct);
 void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 
 void init_tile_y(map_t *map_struct);
-void update_tile_y(map_t *map_struct, ui_t *ui);
+void update_tile_y(map_t *map_struct, ui_t *ui, int nbr_of_obj);
 void set_lose(link_t *link, ui_t *ui_struct);
+void set_win(link_t *link, ui_t *ui_struct);
 
 void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct);
+void set_action(link_t *link, ui_t *ui_struct);
 void get_link_pos(link_t *link);
 int set_actu_tile(int i, map_t *map_struct);
 void apply_gravity(link_t *link);
 
 void set_menu(ui_t *ui, link_t *link);
 void set_lose_menu(ui_t *ui, link_t *link);
+void set_win_menu(ui_t *ui, link_t *link);
 void set_start_menu(ui_t *ui, link_t *link);
 
-void sound_start(void);
-void sound_die(void);
+void sound_jump(ui_t *ui_struct);
+void sound_start(ui_t *ui_struct);
+void sound_die(ui_t *ui_struct);
+void sound_win(ui_t *ui_struct);
+void initialise_sound_manager(ui_t *ui_struct);
 
 void draw_ui_gameover(sfRenderWindow *window);
+void draw_ui_win(sfRenderWindow *window);
 void draw_ui_start(sfRenderWindow *window);
 void draw_button_play(sfRenderWindow *window);
 void draw_button_quit(sfRenderWindow *window);

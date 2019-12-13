@@ -22,19 +22,11 @@ int main(int ac, char **av)
     ui_struct = malloc(sizeof(ui_t));
     map_struct = malloc(sizeof(map_t));
     obj_struct = malloc(sizeof(obj_t));
-    main_extend_2(ui_struct, link);
-    start_map(av, map_struct);
+    start_script(ui_struct, map_struct, link, av);
     while (sfRenderWindow_isOpen(ui_struct->window)) {
         while (sfRenderWindow_pollEvent(ui_struct->window, &event))
             analyse_events(ui_struct->window, event, link, ui_struct);
-        main_extend_1(ui_struct);
-        set_map(map_struct, ui_struct, obj_struct);
-        if (ui_struct->menu == 0)
-            define_link(link, ui_struct, map_struct);
-        else
-            set_menu(ui_struct, link);
-        set_score(ui_struct);
-        extend_window_open(ui_struct->window, ui_struct, event);
+        extend_window_open(ui_struct, link, map_struct, obj_struct);
         if (ui_struct->quit == 1)
             break;
     }
@@ -42,9 +34,24 @@ int main(int ac, char **av)
     return EXIT_SUCCESS;
 }
 
-void extend_window_open(sfRenderWindow *window, ui_t *ui_struct, sfEvent event)
+void start_script(ui_t *ui, map_t *map_struct, link_t *link, char **av)
 {
-    sfRenderWindow_display(window);
+    main_extend_2(ui, link);
+    start_map(av, map_struct);
+}
+
+void extend_window_open(ui_t *ui_struct, link_t *link
+    , map_t *map_struct, obj_t *obj_struct)
+{
+    initialise_sound_manager(ui_struct);
+    main_extend_1(ui_struct);
+    set_map(map_struct, ui_struct, obj_struct);
+    if (ui_struct->menu == 0)
+        define_link(link, ui_struct, map_struct);
+    else
+        set_menu(ui_struct, link);
+    set_score(ui_struct);
+    sfRenderWindow_display(ui_struct->window);
 }
 
 int draw_help(int ac, char **av)

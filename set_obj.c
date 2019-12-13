@@ -28,7 +28,7 @@ void create_object(int nbr_of_obj, obj_t *obj_struct, ui_t *ui,
         sfRenderWindow_drawSprite(ui->window, obj_struct->sprite_obj, NULL);
         obj_struct->next = malloc(sizeof(obj_t));
     }
-    update_tile_y(map_struct, ui);
+    update_tile_y(map_struct, ui, nbr_of_obj);
 }
 
 void create_obj_1(int nbr_of_obj, obj_t *obj_struct)

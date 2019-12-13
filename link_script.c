@@ -68,3 +68,8 @@ void set_lose(link_t *link, ui_t *ui_struct)
 {
     ui_struct->menu = 2;
 }
+
+void set_win(link_t *link, ui_t *ui_struct)
+{
+    ui_struct->menu = 3;
+}

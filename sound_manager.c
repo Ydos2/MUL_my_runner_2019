@@ -8,28 +8,52 @@
 #include "include/frambuffer.h"
 #include "include/my.h"
 
-void sound_start(void)
+void sound_start(ui_t *ui_struct)
 {
-    sfSound *fire_sound = NULL;
     float volume = 50;
-    sfSoundBuffer* buffer = NULL;
 
-    buffer = sfSoundBuffer_createFromFile("./sound/start_sound.ogg");
-    fire_sound = sfSound_create();
-    sfSound_setBuffer(fire_sound, buffer);
-    sfSound_setVolume(fire_sound, volume);
-    sfSound_play(fire_sound);
+    ui_struct->buffer = sfSoundBuffer_createFromFile(
+        "./sound/Cours_Forrest.ogg");
+    ui_struct->empty_sound = sfSound_create();
+    sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
+    sfSound_setVolume(ui_struct->empty_sound, volume);
+    sfSound_play(ui_struct->empty_sound);
 }
 
-void sound_die(void)
+void sound_die(ui_t *ui_struct)
 {
-    sfSound *empty_sound = NULL;
     float volume = 50;
-    sfSoundBuffer* buffer = NULL;
 
-    buffer = sfSoundBuffer_createFromFile("./sound/game_over.ogg");
-    empty_sound = sfSound_create();
-    sfSound_setBuffer(empty_sound, buffer);
-    sfSound_setVolume(empty_sound, volume);
-    sfSound_play(empty_sound);
+    ui_struct->buffer = sfSoundBuffer_createFromFile("./sound/game_over.ogg");
+    ui_struct->empty_sound = sfSound_create();
+    sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
+    sfSound_setVolume(ui_struct->empty_sound, volume);
+    sfSound_play(ui_struct->empty_sound);
+}
+
+void sound_win(ui_t *ui_struct)
+{
+    float volume = 50;
+
+    ui_struct->buffer = sfSoundBuffer_createFromFile("./sound/win.ogg");
+    ui_struct->empty_sound = sfSound_create();
+    sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
+    sfSound_setVolume(ui_struct->empty_sound, volume);
+    sfSound_play(ui_struct->empty_sound);
+}
+
+void initialise_sound_manager(ui_t *ui_struct)
+{
+    if (ui_struct->menu == 0 && ui_struct->play_sound == 0) {
+        sfMusic_destroy(ui_struct->music_sound);
+        music_game(ui_struct);
+        ui_struct->play_sound = 1;
+    } else if (ui_struct->menu != 0 && ui_struct->play_sound == 1) {
+        sfMusic_destroy(ui_struct->music_sound);
+        music_title(ui_struct);
+        ui_struct->play_sound = 0;
+    }/*
+    sound_win(ui_struct);
+    sound_die(ui_struct);
+    sound_start(ui_struct);*/
 }
