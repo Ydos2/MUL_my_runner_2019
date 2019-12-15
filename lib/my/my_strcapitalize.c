@@ -4,7 +4,8 @@
 ** File description:
 ** my_strcapitalize
 */
-#include "./../../include/my.h"
+
+#include "my.h"
 
 void to_lower(char *c)
 {
@@ -27,16 +28,13 @@ int is_alphanum(char *c)
 
 char *my_strcapitalize(char *str)
 {
-    int a = 1;
     int length = my_strlen(str);
 
     to_upper(&str[0]);
-    while (a < (length)){
+    for (int a = 1; a < (length); a++)
         if (!is_alphanum(&str[a-1]))
             to_upper(&str[a]);
         else
             to_lower(&str[a]);
-        a++;
-    }
     return (str);
 }

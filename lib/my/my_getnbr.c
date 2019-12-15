@@ -4,7 +4,8 @@
 ** File description:
 ** my_getnbr
 */
-#include "./../../include/my.h"
+
+#include "my.h"
 
 int my_getnbr(char const *str)
 {

@@ -4,17 +4,16 @@
 ** File description:
 ** my_strcat
 */
-#include "./../../include/my.h"
+
+#include "my.h"
 
 char *my_strcat(char *dest, char const *src)
 {
     int dest_length = my_strlen(dest);
     int a = 0;
 
-    while (src[a] != '\0'){
+    for (; src[a] != '\0'; a++)
         dest[dest_length + a] = src[a];
-        a++;
-    }
     dest[dest_length + a] = '\0';
     return (dest);
 }

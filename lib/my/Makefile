@@ -11,12 +11,9 @@ LIBCOMPILE		= gcc -c $(SRC)
 
 SRC		=	my_atoi.c					\
 			my_compute_power_rec.c		\
-			my_compute_square_root.c	\
-			my_find_prime_sup.c			\
 			my_getnbr.c					\
 			my_int_to_str.c				\
 			my_intlen.c					\
-			my_is_prime.c				\
 			my_isneg.c					\
 			my_itoa.c					\
 			my_put_nbr_base.c			\
@@ -24,8 +21,6 @@ SRC		=	my_atoi.c					\
 			my_putchar.c				\
 			my_putstr.c					\
 			my_revstr.c					\
-			my_showmem.c				\
-			my_showstr.c				\
 			my_sort_int_array.c			\
 			my_str_isalpha.c			\
 			my_str_islower.c			\
@@ -43,12 +38,9 @@ SRC		=	my_atoi.c					\
 
 SRC_O	=	my_atoi.o					\
 			my_compute_power_rec.o		\
-			my_compute_square_root.o	\
-			my_find_prime_sup.o			\
 			my_getnbr.o					\
 			my_int_to_str.o				\
 			my_intlen.o					\
-			my_is_prime.o				\
 			my_isneg.o					\
 			my_itoa.o					\
 			my_put_nbr_base.o			\
@@ -56,8 +48,6 @@ SRC_O	=	my_atoi.o					\
 			my_putchar.o				\
 			my_putstr.o					\
 			my_revstr.o					\
-			my_showmem.o				\
-			my_showstr.o				\
 			my_sort_int_array.o			\
 			my_str_isalpha.o			\
 			my_str_islower.o			\

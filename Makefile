@@ -1,97 +1,80 @@
 ##
 ## EPITECH PROJECT, 2019
-## COMPILATION
+## Makefile
 ## File description:
 ## Makefile
 ##
 
-NAMELIB		= libmy.a
-DIRLIB		=./lib/
-DIRLIBMY		=./lib/my/
-DIRTEST		=./tests/*.c
+CC        =    gcc
 
-SRC		=	background_draw.c	\
-			link_anim.c			\
-			link_script.c		\
-			main_extend.c		\
-			run_event.c			\
-			run_main.c			\
-			run_sound.c			\
-			run_tools_1.c		\
-			create_map.c		\
-			set_obj.c			\
-			initialise_tile.c	\
-			gravity.c			\
-			menu.c				\
-			sound_manager.c		\
-			draw_ui.c			\
-			score.c
+SRC     =	src/background_draw.c	\
+			src/link_anim.c			\
+			src/link_script.c		\
+			src/main_extend.c		\
+			src/run_event.c			\
+			src/run_main.c			\
+			src/run_sound.c			\
+			src/run_tools_1.c		\
+			src/create_map.c		\
+			src/set_obj.c			\
+			src/initialise_tile.c	\
+			src/gravity.c			\
+			src/menu.c				\
+			src/sound_manager.c		\
+			src/draw_ui.c			\
+			src/score.c				\
 
-SRC_TESTS	=	criterion.c
+OBJ     =	$(SRC:.c=.o) 			\
 
-SRC_O	=	background_draw.o	\
-			link_anim.o			\
-			link_script.o		\
-			main_extend.o		\
-			run_event.o			\
-			run_main.o			\
-			run_sound.o			\
-			run_tools_1.o		\
-			create_map.o		\
-			set_obj.o			\
-			initialise_tile.o	\
-			gravity.o			\
-			menu.o				\
-			sound_manager.o		\
-			draw_ui.o			\
-			score.o
+COVERAGE     =     $(SRC:.c=.gcda)			\
+                $(MAIN_SRC:.c=.gcda)		\
+                $(TEST_SRC:.c=.gcda)		\
+                $(SRC:.c=.gcno)				\
+                $(MAIN_SRC:.c=.gcno)		\
+                $(TEST_SRC:.c=.gcno)		\
 
-COMPIL		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC)
-COMPIL_DEBUG		= gcc $(SRC) -L $(DIRLIB) -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC) -g3
-COMPIL_TEST		= gcc $(SRC) -g3 -L $(DIRLIB) $(DIRTEST) --coverage -lcriterion -lmy -l csfml-graphics -l csfml-system -l csfml-audio -o $(EXEC_TEST)
-EXEC		= my_runner
-EXEC_TEST		= tests_my_runner
-RUN_TESTS	=	./$(EXEC_TEST)
-RUN_VALGRIND	=	valgrind --leak-resolution=high --num-callers=40 --track-origins=yes ./$(EXEC) map/map1
+MAIN_SRC    =    src/main.c			\
 
-COVERAGE	=	gcovr --exclude tests/
-COVERAGE_BRANCH		=	gcovr --exclude tests/ -b
+MAIN_OBJ    =    $(MAIN_SRC:.c=.o)	\
 
-all	: make compilation clean
+CFLAGS    =    -I./include -Wextra --coverage -l csfml-graphics -l csfml-system -l csfml-audio
 
-make:
-		cd $(DIRLIBMY) && make
+TARGET    =    my_runner		\
 
-compilation:
-		$(COMPIL)
+TEST_SRC     =     tests/criterion.c		\
 
-compilation_test:
-		$(COMPIL_TEST)
+TEST_OBJ     =     $(TEST_SRC:.c=.o)
 
-compilation_debug:
-		$(COMPIL_DEBUG)
+TEST_TARGET     =     unit_tests
 
-run_test:
-		$(RUN_TESTS)
-		$(COVERAGE)
-		$(COVERAGE_BRANCH)
+LDFLAGS     =     -lcriterion
 
-run_valgrind:
-		$(RUN_VALGRIND)
+all: $(TARGET)
+
+build_lib:
+	cd lib/my/ && make
+	cp lib/my/libmy.a lib/
+	cp lib/my/my.h include/
+
+$(TARGET): $(OBJ) $(MAIN_OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(MAIN_OBJ) -o $(TARGET)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-		rm -f $(SRC_O)
+	rm -f $(OBJ) $(MAIN_OBJ) $(TEST_OBJ) $(COVERAGE)
 
-test_clean:
-		rm -f *.gcda rm -f *.gcno
+fclean: clean
+	rm -f $(TARGET) $(TEST_TARGET)
 
-fclean: clean test_clean
-		rm -f $(EXEC) $(EXEC_TEST) $(DIRLIB)$(NAMELIB)
+re:    fclean all
 
-re: fclean all
+tests_build: $(OBJ) $(TEST_OBJ)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(TEST_OBJ) -o $(TEST_TARGET)
 
-tests_run: make compilation compilation_test run_test clean test_clean
+tests_run: tests_build
+	./$(TEST_TARGET)
+	gcovr --exclude tests/
 
-debug: make compilation compilation_debug clean
-
-valgrind: make compilation compilation_debug run_valgrind clean
+re_tests: fclean tests_run

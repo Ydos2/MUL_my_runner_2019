@@ -5,13 +5,13 @@
 ** my_put_nbr_base
 */
 
-#include "./../../include/my.h"
+#include "my.h"
 
 int my_put_nbr_base(int nbr, char *base)
 {
-    int diviseur;
-    int result;
-    int t_base;
+    int diviseur = 0;
+    int result = 0;
+    int t_base = 0;
 
     t_base = my_strlen(base);
     if (nbr < 0) {

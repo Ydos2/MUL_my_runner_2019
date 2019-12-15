@@ -4,31 +4,27 @@
 ** File description:
 ** my_revstr
 */
-#include "./../../include/my.h"
+
+#include "my.h"
 
 char my_compt(char *str)
 {
+    char i;
 
-    char i = 0;
-
-    while (str[i] != '\0') {
-        i++;
-    }
+    for (i = 0; str[i]; ++i);
     return (i);
 }
 
 char *my_revstr(char *str)
 {
-    char save = 0;
-    char a = my_compt(str) - 1;
-    char b = 0;
+    char save;
+    char a;
+    char b;
 
-    while (b < a) {
+    for (a = my_compt(str) - 1, b = 0; b < a; ++b, --a) {
         save = str[b];
         str[b] = str[a];
         str[a] = save;
-        b++;
-        a--;
     }
     return (str);
 }

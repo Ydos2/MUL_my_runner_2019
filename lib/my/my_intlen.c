@@ -5,15 +5,13 @@
 ** intlen
 */
 
-#include "./../../include/my.h"
+#include "my.h"
 
 int my_intlen(int nb)
 {
     float float_int = nb;
-    int result = 0;
+    int result;
 
-    for (; float_int >= 1; float_int /= 10) {
-        result++;
-    }
+    for (result = 0; float_int >= 1; float_int /= 10, result++);
     return (result);
 }

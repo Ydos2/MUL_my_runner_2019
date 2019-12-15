@@ -5,13 +5,14 @@
 ** my_int_to_str
 */
 
-#include "./../../include/my.h"
+#include "my.h"
 
 char *my_int_to_str(int nb)
 {
     int len = my_intlen(nb);
     int div = 1;
     char *result = malloc(sizeof(char) * (len + 2));
+
     if (nb < 0) {
         nb *= -1;
         result[len] = '-';

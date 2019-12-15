@@ -4,7 +4,8 @@
 ** File description:
 ** my_putchar
 */
-#include "./../../include/my.h"
+
+#include "my.h"
 
 void my_putchar(char c)
 {
