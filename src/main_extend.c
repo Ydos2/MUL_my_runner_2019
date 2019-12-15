@@ -32,6 +32,7 @@ void main_extend_2(ui_t *ui_struct, link_t *link)
     ui_struct->menu = 1;
     ui_struct->win = 0;
     ui_struct->play_sound = 1;
+    ui_struct->select_skin = 100;
     initialise_var(ui_struct, link);
     sfRenderWindow_setFramerateLimit(ui_struct->window, 30);
 }
@@ -50,5 +51,6 @@ void initialise_var(ui_t *ui_struct, link_t *link)
     ui_struct->start_button_press = 0;
     ui_struct->pos_background_up.x = 0;
     ui_struct->win = 0;
+    ui_struct->lose = 0;
     sound_start(ui_struct);
 }

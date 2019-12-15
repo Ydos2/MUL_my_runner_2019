@@ -82,6 +82,7 @@ void set_skin_menu(ui_t *ui, link_t *link)
     draw_skin_3(ui);
     draw_skin_4(ui);
     draw_skin_5(ui);
+    draw_select_skin(ui);
     if (ui->start_button_press == 1) {
         initialise_var(ui, link);
         ui->play_one = 0;

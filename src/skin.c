@@ -90,3 +90,23 @@ void draw_ui_return(sfRenderWindow *window)
     sfRenderWindow_drawText(window, score, NULL);
     sfFont_destroy(font);
 }
+
+void draw_select_skin(ui_t *ui)
+{
+    sfSprite* sprite_obj = NULL;
+    sfTexture* texture_obj = NULL;
+    sfVector2f pos_obj;
+    sfVector2f scale;
+
+    scale.x = 4;
+    scale.y = 4;
+    pos_obj.x = ui->select_skin;
+    pos_obj.y = 500;
+    texture_obj = sfTexture_createFromFile(
+            "./texture/Select_Skin.png", NULL);
+    sprite_obj = sfSprite_create();
+    sfSprite_setTexture(sprite_obj, texture_obj, sfTrue);
+    sfSprite_setScale(sprite_obj, scale);
+    sfSprite_setPosition(sprite_obj, pos_obj);
+    sfRenderWindow_drawSprite(ui->window, sprite_obj, NULL);
+}

@@ -36,7 +36,7 @@ void set_action(ui_t *ui_struct)
     if (ui_struct->win == 1)
         set_win(ui_struct);
     else
-        set_lose(ui_struct);
+        ui_struct->lose = 1;
 }
 
 void get_link_pos(link_t *link)

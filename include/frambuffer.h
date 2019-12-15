@@ -88,7 +88,9 @@ typedef struct ui {
     int play_one;
     int play_sound;
     int win;
+    int lose;
     int obj_actu;
+    int select_skin;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -138,7 +140,7 @@ void draw_background_down(ui_t *ui);
 
 void move_rect_link(link_t *link);
 void move_rect_link_jump(link_t *link);
-void move_rect_link_die(link_t *link);
+void move_rect_link_die(link_t *link, ui_t *ui);
 
 void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 char *my_strdupp(char const *src);
@@ -186,6 +188,7 @@ sfTexture* get_skin(link_t *link, sfTexture* texture_link);
 void draw_ui_return(sfRenderWindow *window);
 void draw_button_skin(sfRenderWindow *window);
 void draw_ui_skin(sfRenderWindow *window);
+void draw_select_skin(ui_t *ui);
 
 void draw_skin_1(ui_t *ui);
 void draw_skin_2(ui_t *ui);

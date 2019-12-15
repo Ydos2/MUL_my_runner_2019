@@ -40,26 +40,15 @@ void move_rect_link_jump(link_t *link)
         link->offset = 0;
 }
 
-void move_rect_link_die(link_t *link)
+void move_rect_link_die(link_t *link, ui_t *ui)
 {
     int i = 0;
 
-    if (link->offset == 230 || link->offset == 345 && i == 0) {
-        link->offset = 275;
+    link->top = 180;
+    if (link->offset != 220 && i == 0) {
+        link->offset = 220;
         i++;
     }
-    if (link->offset < 229 || link->offset > 424 && i == 0) {
-        link->offset = 230;
-        i++;
-    }
-    if (link->offset == 275 && i == 0) {
-        link->offset = 296;
-        i++;
-    }
-    if (link->offset == 296 && i == 0) {
-        link->offset = 320;
-        i++;
-    }
-    if (link->offset == 320 && i == 0)
-        link->offset = 345;
+    if (link->offset == 220 && i == 0)
+        set_lose(ui);
 }

@@ -18,8 +18,12 @@ void analyse_events(sfRenderWindow *window, sfEvent event,
     case sfEvtMouseButtonPressed:
         if (ui_struct->menu != 4)
             manage_mouse_click_start(event.mouseButton, ui_struct);
-        else
+        else {
             manage_mouse_click_skin(event.mouseButton, link, ui_struct);
+            if (event.mouseButton.x <= 950 && event.mouseButton.x >= 750 &&
+            event.mouseButton.y <= 850 && event.mouseButton.y > 750)
+                ui_struct->menu = 1;
+        }
         break;
     case sfEvtClosed:
         sfRenderWindow_close(window);
@@ -64,19 +68,19 @@ void manage_mouse_click_skin(sfMouseButtonEvent event, link_t *link, ui_t *ui)
     if (event.button == sfMouseLeft) {
         if (event.x <= 200 && event.x >= 100 &&
         event.y <= 600 && event.y > 500)
-            link->skin = 0;
+            link->skin = 0, ui->select_skin = 100;
         if (event.x <= 400 && event.x >= 300 &&
         event.y <= 600 && event.y > 500)
-            link->skin = 1;
+            link->skin = 1, ui->select_skin = 300;
         if (event.x <= 600 && event.x >= 500 &&
         event.y <= 600 && event.y > 500)
-            link->skin = 2;
+            link->skin = 2, ui->select_skin = 500;
         if (event.x <= 800 && event.x >= 700 &&
         event.y <= 600 && event.y > 500)
-            link->skin = 3;
+            link->skin = 3, ui->select_skin = 700;
         if (event.x <= 1000 && event.x >= 900 &&
         event.y <= 600 && event.y > 500)
-            link->skin = 4;
+            link->skin = 4, ui->select_skin = 900;
         if (event.x <= 950 && event.x >= 750 &&
         event.y <= 850 && event.y > 750)
             ui->menu = 1;
