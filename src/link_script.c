@@ -35,8 +35,7 @@ void draw_link(ui_t *ui, link_t *link)
     link->rect.height = 33;
     link->rect.top = link->top;
     link->rect.left = link->offset;
-    texture_link = sfTexture_createFromFile("./texture/link_run.png",
-                            NULL);
+    texture_link = get_skin(link, texture_link);
     sprite_link = sfSprite_create();
     sfSprite_setTexture(sprite_link, texture_link, sfTrue);
     sfSprite_setScale(sprite_link, scale);

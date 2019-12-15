@@ -68,6 +68,7 @@ typedef struct link {
     int y_pos;
     int gravity;
     int float_jump;
+    int skin;
     sfIntRect rect;
     sfVector2f position_link;
 } link_t;
@@ -114,6 +115,7 @@ void manage_key_space(link_t *link, ui_t *ui_struct);
 void manage_key_click_start(sfKeyEvent event,
                     link_t *link, ui_t *ui_struct);
 void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct);
+void manage_mouse_click_skin(sfMouseButtonEvent event, link_t *link, ui_t *ui);
 
 void main_extend_1(ui_t *ui_struct);
 void main_extend_2(ui_t *ui_struct, link_t *link);
@@ -163,6 +165,7 @@ void set_menu(ui_t *ui, link_t *link);
 void set_lose_menu(ui_t *ui, link_t *link);
 void set_win_menu(ui_t *ui, link_t *link);
 void set_start_menu(ui_t *ui, link_t *link);
+void set_skin_menu(ui_t *ui, link_t *link);
 
 void sound_jump(ui_t *ui_struct);
 void sound_start(ui_t *ui_struct);
@@ -178,4 +181,15 @@ void draw_button_quit(sfRenderWindow *window);
 
 void draw_ui_score_one(sfRenderWindow *window);
 void set_score(ui_t *ui);
+
+sfTexture* get_skin(link_t *link, sfTexture* texture_link);
+void draw_ui_return(sfRenderWindow *window);
+void draw_button_skin(sfRenderWindow *window);
+void draw_ui_skin(sfRenderWindow *window);
+
+void draw_skin_1(ui_t *ui);
+void draw_skin_2(ui_t *ui);
+void draw_skin_3(ui_t *ui);
+void draw_skin_4(ui_t *ui);
+void draw_skin_5(ui_t *ui);
 #endif /*FRAMBUFFER_H_ */

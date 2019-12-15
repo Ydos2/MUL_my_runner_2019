@@ -10,6 +10,7 @@
 
 void start_script(ui_t *ui, map_t *map_struct, link_t *link, char **av)
 {
+    link->skin = 0;
     main_extend_2(ui, link);
     start_map(av, map_struct);
 }

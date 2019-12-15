@@ -23,6 +23,8 @@ SRC     =	src/background_draw.c	\
 			src/sound_manager.c		\
 			src/draw_ui.c			\
 			src/score.c				\
+			src/skin.c				\
+			src/draw_skin.c			\
 
 OBJ     =	$(SRC:.c=.o) 			\
 

@@ -21,7 +21,7 @@ void sound_jump(ui_t *ui_struct)
 
 void music_game(ui_t *ui_struct)
 {
-    float volume = 2;
+    float volume = 8;
     sfBool loop = sfTrue;
 
     ui_struct->music_sound = sfMusic_createFromFile("./sound/Zelda theme.ogg");

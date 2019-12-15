@@ -76,7 +76,7 @@ void draw_button_play(sfRenderWindow *window)
     sfVector2f position_score;
 
     position_score.x = 900;
-    position_score.y = 600;
+    position_score.y = 550;
     sfFont* font;
     sfText *score;
     font = sfFont_createFromFile("font/Krisha-Regular.otf");
@@ -97,7 +97,7 @@ void draw_button_quit(sfRenderWindow *window)
     sfVector2f position_score;
 
     position_score.x = 900;
-    position_score.y = 750;
+    position_score.y = 850;
     sfFont* font;
     sfText *score;
     font = sfFont_createFromFile("font/Krisha-Regular.otf");
