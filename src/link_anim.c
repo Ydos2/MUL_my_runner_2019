@@ -24,7 +24,9 @@ void move_rect_link(link_t *link)
     if (link->offset == 82 && i == 0)
         link->offset = 108, i++;
     if (link->offset == 108 && i == 0)
-        link->offset = 134;
+        link->offset = 134, i++;
+    if (i == 0)
+        link->offset = 0;
 }
 
 void move_rect_link_jump(link_t *link)
@@ -36,8 +38,10 @@ void move_rect_link_jump(link_t *link)
         link->offset = 32;
     if (link->is_jump_actu > 1 && link->is_jump_actu <= 5)
         link->offset = 56;
-    if (link->is_jump_actu <= 1)
+    if (link->is_jump_actu <= 1 && link->gravity == 0) {
         link->offset = 0;
+        link->top = 0;
+    }
 }
 
 void move_rect_link_die(link_t *link, ui_t *ui)
@@ -49,6 +53,15 @@ void move_rect_link_die(link_t *link, ui_t *ui)
         link->offset = 220;
         i++;
     }
-    if (link->offset == 220 && i == 0)
+    if (link->offset == 220 && i == 0) {
         set_lose(ui);
+        link->offset = 0;
+        link->top = 0;
+    }
+}
+
+void move_rect_link_fall(link_t *link)
+{
+    link->top = 34;
+    link->offset = 32;
 }

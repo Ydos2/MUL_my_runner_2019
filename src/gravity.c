@@ -82,6 +82,10 @@ int set_actu_tile(int i, map_t *map_struct)
 
 void apply_gravity(link_t *link)
 {
-    if (link->gravity == 1)
+    link->is_fall = 0;
+    if (link->gravity == 1) {
         link->position_link.y += 16;
+        if (link->is_jump == 0)
+            link->is_fall = 1;
+    }
 }

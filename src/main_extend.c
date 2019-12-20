@@ -33,6 +33,7 @@ void main_extend_2(ui_t *ui_struct, link_t *link)
     ui_struct->win = 0;
     ui_struct->play_sound = 1;
     ui_struct->select_skin = 100;
+    ui_struct->pos_background_midle.x = 0;
     initialise_var(ui_struct, link);
     sfRenderWindow_setFramerateLimit(ui_struct->window, 30);
 }
@@ -52,5 +53,13 @@ void initialise_var(ui_t *ui_struct, link_t *link)
     ui_struct->pos_background_up.x = 0;
     ui_struct->win = 0;
     ui_struct->lose = 0;
+    ui_struct->finich_move = 1;
     sound_start(ui_struct);
+}
+
+void manage_mouse_click_skin_extend(sfMouseButtonEvent event, ui_t *ui)
+{
+    if (event.x <= 950 && event.x >= 750 &&
+            event.y <= 850 && event.y > 750)
+                ui->menu = 1;
 }

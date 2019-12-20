@@ -20,7 +20,8 @@ void extend_window_open(ui_t *ui_struct, link_t *link
 {
     initialise_sound_manager(ui_struct);
     main_extend_1(ui_struct);
-    set_map(map_struct, ui_struct, obj_struct);
+    if (ui_struct->finich_move == 1)
+        set_map(map_struct, ui_struct, obj_struct);
     if (ui_struct->menu == 0)
         define_link(link, ui_struct, map_struct);
     else
@@ -32,20 +33,31 @@ void extend_window_open(ui_t *ui_struct, link_t *link
 int draw_help(int ac, char **av)
 {
     if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h') {
-        write(1, "Finite runner created with CSFML.\n", 34);
-        write(1, "\n", 1);
+        write(1, "Finite runner created with CSFML.\n\n", 35);
         write(1, "USAGE\n", 6);
-        write(1, "\t./my_runner map.txt\n", 21);
-        write(1, "\n", 1);
-        write(1, "\n", 1);
+        write(1, "\t./my_runner map.txt\n\n\n", 23);
         write(1, "OPTIONS\n", 8);
-        write(1, "\t-i\tlaunch the game in infinity mode.\n", 38);
-        write(1, "\t-h\tprint the usage and quit\n", 29);
-        write(1, "\n", 1);
+        write(1, "\t-t\tprint the tuto and quit\n", 28);
+        write(1, "\t-h\tprint the usage and quit\n\n", 30);
         write(1, "USER INTERACTIONS\n", 18);
         write(1, "\tSPACE_KEY\tjump.\n", 17);
+        return (1);
+    } else if (ac == 2 && av[1][0] == '-' && av[1][1] == 't') {
+        draw_tuto(ac, av);
         return (1);
     } else {
         return (0);
     }
+}
+
+int draw_tuto(int ac, char **av)
+{
+    write(1, "Finite runner created with CSFML.\n\n", 35);
+    write(1, "USAGE\n", 6);
+    write(1, "\t./my_runner map.txt\n\n\n", 23);
+    write(1, "OPTIONS\n", 8);
+    write(1, "\t-t\tprint the tuto and quit\n", 28);
+    write(1, "\t-h\tprint the usage and quit\n\n", 30);
+    write(1, "USER INTERACTIONS\n", 18);
+    write(1, "\tSPACE_KEY\tjump.\n", 17);
 }

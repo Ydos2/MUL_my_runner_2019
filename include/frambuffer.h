@@ -64,6 +64,7 @@ typedef struct link {
     int top;
     int is_death;
     int is_jump;
+    int is_fall;
     int is_jump_actu;
     int y_pos;
     int gravity;
@@ -91,6 +92,7 @@ typedef struct ui {
     int lose;
     int obj_actu;
     int select_skin;
+    int finich_move;
     sfVector2f pos_background_up;
     sfVector2f pos_background_midle;
     sfVector2f pos_background_down;
@@ -107,6 +109,7 @@ typedef struct ui {
 void extend_window_open(ui_t *ui_struct, link_t *link
     , map_t *map_struct, obj_t *obj_struct);
 int draw_help(int ac, char **av);
+int draw_tuto(int ac, char **av);
 
 void music_game(ui_t *ui_struct);
 void music_title(ui_t *ui_struct);
@@ -141,6 +144,7 @@ void draw_background_down(ui_t *ui);
 void move_rect_link(link_t *link);
 void move_rect_link_jump(link_t *link);
 void move_rect_link_die(link_t *link, ui_t *ui);
+void move_rect_link_fall(link_t *link);
 
 void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 char *my_strdupp(char const *src);
@@ -195,4 +199,6 @@ void draw_skin_2(ui_t *ui);
 void draw_skin_3(ui_t *ui);
 void draw_skin_4(ui_t *ui);
 void draw_skin_5(ui_t *ui);
+
+void manage_mouse_click_skin_extend(sfMouseButtonEvent event, ui_t *ui);
 #endif /*FRAMBUFFER_H_ */

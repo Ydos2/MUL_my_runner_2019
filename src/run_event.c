@@ -18,12 +18,8 @@ void analyse_events(sfRenderWindow *window, sfEvent event,
     case sfEvtMouseButtonPressed:
         if (ui_struct->menu != 4)
             manage_mouse_click_start(event.mouseButton, ui_struct);
-        else {
+        else
             manage_mouse_click_skin(event.mouseButton, link, ui_struct);
-            if (event.mouseButton.x <= 950 && event.mouseButton.x >= 750 &&
-            event.mouseButton.y <= 850 && event.mouseButton.y > 750)
-                ui_struct->menu = 1;
-        }
         break;
     case sfEvtClosed:
         sfRenderWindow_close(window);
@@ -85,4 +81,5 @@ void manage_mouse_click_skin(sfMouseButtonEvent event, link_t *link, ui_t *ui)
         event.y <= 850 && event.y > 750)
             ui->menu = 1;
     }
+    manage_mouse_click_skin_extend(event, ui);
 }

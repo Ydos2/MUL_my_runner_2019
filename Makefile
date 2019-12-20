@@ -28,18 +28,18 @@ SRC     =	src/background_draw.c	\
 
 OBJ     =	$(SRC:.c=.o) 			\
 
-COVERAGE     =     $(SRC:.c=.gcda)			\
-                $(MAIN_SRC:.c=.gcda)		\
-                $(TEST_SRC:.c=.gcda)		\
-                $(SRC:.c=.gcno)				\
-                $(MAIN_SRC:.c=.gcno)		\
-                $(TEST_SRC:.c=.gcno)		\
+COVERAGE		=	$(SRC:.c=.gcda)				\
+					$(MAIN_SRC:.c=.gcda)		\
+					$(TEST_SRC:.c=.gcda)		\
+					$(SRC:.c=.gcno)				\
+					$(MAIN_SRC:.c=.gcno)		\
+					$(TEST_SRC:.c=.gcno)		\
 
 MAIN_SRC    =    src/main.c			\
 
 MAIN_OBJ    =    $(MAIN_SRC:.c=.o)	\
 
-CFLAGS    =    -I./include -Wextra --coverage -l csfml-graphics -l csfml-system -l csfml-audio
+CFLAGS    =    -I./include -Wextra --coverage -l csfml-graphics -l csfml-system -l csfml-audio -g3
 
 TARGET    =    my_runner		\
 

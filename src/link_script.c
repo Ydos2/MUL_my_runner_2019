@@ -12,7 +12,9 @@ void define_link(link_t *link, ui_t *ui_struct, map_t *map_struct)
 {
     ui_struct->score++;
     if (ui_struct->seconds > 0.1 && ui_struct->lose != 1) {
-        if (link->is_jump == 0)
+        if (link->is_fall == 1)
+            move_rect_link_fall(link);
+        else if (link->is_jump == 0)
             move_rect_link(link);
         else
             move_rect_link_jump(link);
@@ -50,11 +52,11 @@ void intance_jump(link_t *link)
     if (link->is_jump_actu == 0)
         link->is_jump_actu = 30;
     if (link->is_jump == 1 && link->is_jump_actu > 0 &&
-            link->is_jump_actu <= 10) {
+            link->is_jump_actu <= 15) {
         link->position_link.x = 100;
         link->is_jump_actu -= 1;
     }
-    if (link->is_jump == 1 && link->is_jump_actu > 10 &&
+    if (link->is_jump == 1 && link->is_jump_actu > 15 &&
             link->is_jump_actu <= 30) {
         link->position_link.x = 100;
         link->position_link.y -= 32;
