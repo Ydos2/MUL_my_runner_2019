@@ -25,6 +25,8 @@ SRC     =	src/background_draw.c	\
 			src/score.c				\
 			src/skin.c				\
 			src/draw_skin.c			\
+			src/select_level.c		\
+			src/draw_level.c		\
 
 OBJ     =	$(SRC:.c=.o) 			\
 

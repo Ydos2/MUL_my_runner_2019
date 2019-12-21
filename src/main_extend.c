@@ -54,6 +54,7 @@ void initialise_var(ui_t *ui_struct, link_t *link)
     ui_struct->win = 0;
     ui_struct->lose = 0;
     ui_struct->finich_move = 1;
+    ui_struct->lose_move = 0;
     sound_start(ui_struct);
 }
 

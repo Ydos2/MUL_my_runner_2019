@@ -53,8 +53,8 @@ void draw_button_skin(sfRenderWindow *window)
 {
     sfVector2f position_score;
 
-    position_score.x = 800;
-    position_score.y = 700;
+    position_score.x = 775;
+    position_score.y = 750;
     sfFont* font;
     sfText *score;
     font = sfFont_createFromFile("font/Krisha-Regular.otf");

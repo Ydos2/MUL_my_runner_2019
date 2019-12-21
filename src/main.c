@@ -25,7 +25,7 @@ int main(int ac, char **av)
     start_script(ui_struct, map_struct, link, av);
     while (sfRenderWindow_isOpen(ui_struct->window)) {
         while (sfRenderWindow_pollEvent(ui_struct->window, &event))
-            analyse_events(ui_struct->window, event, link, ui_struct);
+            analyse_events(map_struct, event, link, ui_struct);
         extend_window_open(ui_struct, link, map_struct, obj_struct);
         if (ui_struct->quit == 1)
             break;

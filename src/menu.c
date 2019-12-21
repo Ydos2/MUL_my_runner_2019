@@ -18,6 +18,8 @@ void set_menu(ui_t *ui, link_t *link)
         set_win_menu(ui, link);
     if (ui->menu == 4)
         set_skin_menu(ui, link);
+    if (ui->menu == 5)
+        set_menu_select_level(ui, link);
 }
 
 void set_lose_menu(ui_t *ui, link_t *link)
@@ -28,6 +30,7 @@ void set_lose_menu(ui_t *ui, link_t *link)
     }
     draw_ui_gameover(ui->window);
     draw_button_play(ui->window);
+    draw_select_level(ui);
     draw_button_skin(ui->window);
     draw_button_quit(ui->window);
     if (ui->start_button_press == 1) {
@@ -46,6 +49,7 @@ void set_win_menu(ui_t *ui, link_t *link)
     }
     draw_ui_win(ui->window);
     draw_button_play(ui->window);
+    draw_select_level(ui);
     draw_button_skin(ui->window);
     draw_button_quit(ui->window);
     if (ui->start_button_press == 1) {
@@ -60,6 +64,7 @@ void set_start_menu(ui_t *ui, link_t *link)
 {
     draw_ui_start(ui->window);
     draw_button_play(ui->window);
+    draw_select_level(ui);
     draw_button_skin(ui->window);
     draw_button_quit(ui->window);
     if (ui->start_button_press == 1) {
@@ -71,10 +76,6 @@ void set_start_menu(ui_t *ui, link_t *link)
 
 void set_skin_menu(ui_t *ui, link_t *link)
 {
-    if (ui->play_one == 0) {
-        sound_win(ui);
-        ui->play_one = 1;
-    }
     draw_ui_skin(ui->window);
     draw_ui_return(ui->window);
     draw_skin_1(ui);

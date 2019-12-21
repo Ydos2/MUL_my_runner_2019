@@ -48,6 +48,7 @@ void move_rect_link_die(link_t *link, ui_t *ui)
 {
     int i = 0;
 
+    ui->lose_move = 1;
     link->top = 180;
     if (link->offset != 220 && i == 0) {
         link->offset = 220;
@@ -55,6 +56,7 @@ void move_rect_link_die(link_t *link, ui_t *ui)
     }
     if (link->offset == 220 && i == 0) {
         set_lose(ui);
+        ui->lose_move = 0;
         link->offset = 0;
         link->top = 0;
     }

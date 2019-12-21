@@ -74,7 +74,10 @@ void set_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct)
     }
     obj_struct = NULL;
     map_struct->y_tile = 0;
-    ui->move_pos = ui->move_pos + 12;
+    if (ui->lose_move == 0)
+        ui->move_pos = ui->move_pos + 12;
+    else
+        sound_die(ui);
     ui->y_pos = 0;
 }
 

@@ -54,6 +54,5 @@ void initialise_sound_manager(ui_t *ui_struct)
         ui_struct->play_sound = 0;
     }/*
     sound_win(ui_struct);
-    sound_die(ui_struct);
     sound_start(ui_struct);*/
 }

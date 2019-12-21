@@ -90,6 +90,7 @@ typedef struct ui {
     int play_sound;
     int win;
     int lose;
+    int lose_move;
     int obj_actu;
     int select_skin;
     int finich_move;
@@ -114,7 +115,7 @@ int draw_tuto(int ac, char **av);
 void music_game(ui_t *ui_struct);
 void music_title(ui_t *ui_struct);
 
-void analyse_events(sfRenderWindow *window, sfEvent event,
+void analyse_events(map_t *map_struct, sfEvent event,
                     link_t *link, ui_t *ui_struct);
 void manage_key_space(link_t *link, ui_t *ui_struct);
 void manage_key_click_start(sfKeyEvent event,
@@ -201,4 +202,17 @@ void draw_skin_4(ui_t *ui);
 void draw_skin_5(ui_t *ui);
 
 void manage_mouse_click_skin_extend(sfMouseButtonEvent event, ui_t *ui);
+
+void set_menu_select_level(ui_t *ui, link_t *link);
+void draw_select_level(ui_t *ui);
+void manage_mouse_click_lvl(sfMouseButtonEvent event, link_t *link, ui_t *ui
+    , map_t *map_struct);
+void manage_click_level_extand(sfMouseButtonEvent event, link_t *link, ui_t *ui
+    , map_t *map_struct);
+
+void draw_level_1(ui_t *ui);
+void draw_level_2(ui_t *ui);
+void draw_level_3(ui_t *ui);
+void draw_level_4(ui_t *ui);
+void draw_level_5(ui_t *ui);
 #endif /*FRAMBUFFER_H_ */
