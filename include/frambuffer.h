@@ -111,6 +111,7 @@ void extend_window_open(ui_t *ui_struct, link_t *link
     , map_t *map_struct, obj_t *obj_struct);
 int draw_help(int ac, char **av);
 int draw_tuto(int ac, char **av);
+void set_action_event(sfMouseButtonEvent event, link_t *link, ui_t *ui);
 
 void music_game(ui_t *ui_struct);
 void music_title(ui_t *ui_struct);

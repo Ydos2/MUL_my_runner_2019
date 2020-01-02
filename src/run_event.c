@@ -67,25 +67,7 @@ void manage_mouse_click_start(sfMouseButtonEvent event, ui_t *ui_struct)
 
 void manage_mouse_click_skin(sfMouseButtonEvent event, link_t *link, ui_t *ui)
 {
-    if (event.button == sfMouseLeft) {
-        if (event.x <= 200 && event.x >= 100 &&
-        event.y <= 600 && event.y > 500)
-            link->skin = 0, ui->select_skin = 100;
-        if (event.x <= 400 && event.x >= 300 &&
-        event.y <= 600 && event.y > 500)
-            link->skin = 1, ui->select_skin = 300;
-        if (event.x <= 600 && event.x >= 500 &&
-        event.y <= 600 && event.y > 500)
-            link->skin = 2, ui->select_skin = 500;
-        if (event.x <= 800 && event.x >= 700 &&
-        event.y <= 600 && event.y > 500)
-            link->skin = 3, ui->select_skin = 700;
-        if (event.x <= 1000 && event.x >= 900 &&
-        event.y <= 600 && event.y > 500)
-            link->skin = 4, ui->select_skin = 900;
-        if (event.x <= 950 && event.x >= 750 &&
-        event.y <= 850 && event.y > 750)
-            ui->menu = 1;
-    }
+    if (event.button == sfMouseLeft)
+        set_action_event(event, link, ui);
     manage_mouse_click_skin_extend(event, ui);
 }

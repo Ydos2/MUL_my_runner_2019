@@ -16,12 +16,9 @@ void draw_level_1(ui_t *ui)
     sfVector2f scale;
     sfIntRect rect;
 
-    scale.x = 2;
-    scale.y = 2;
-    pos_obj.x = 100;
-    pos_obj.y = 500;
-    rect.width = 75;
-    rect.height = 75;
+    scale.x = 2, scale.y = 2;
+    pos_obj.x = 100, pos_obj.y = 500;
+    rect.width = 75, rect.height = 75;
     rect.top = 0;
     rect.left = 5;
     texture_obj = sfTexture_createFromFile(
@@ -42,12 +39,9 @@ void draw_level_2(ui_t *ui)
     sfVector2f scale;
     sfIntRect rect;
 
-    scale.x = 2;
-    scale.y = 2;
-    pos_obj.x = 300;
-    pos_obj.y = 500;
-    rect.width = 75;
-    rect.height = 75;
+    scale.x = 2, scale.y = 2;
+    pos_obj.x = 300, pos_obj.y = 500;
+    rect.width = 75, rect.height = 75;
     rect.top = 0;
     rect.left = 85;
     texture_obj = sfTexture_createFromFile(
@@ -68,12 +62,9 @@ void draw_level_3(ui_t *ui)
     sfVector2f scale;
     sfIntRect rect;
 
-    scale.x = 2;
-    scale.y = 2;
-    pos_obj.x = 500;
-    pos_obj.y = 500;
-    rect.width = 75;
-    rect.height = 75;
+    scale.x = 2, scale.y = 2;
+    pos_obj.x = 500, pos_obj.y = 500;
+    rect.width = 75, rect.height = 75;
     rect.top = 0;
     rect.left = 160;
     texture_obj = sfTexture_createFromFile(
@@ -94,12 +85,9 @@ void draw_level_4(ui_t *ui)
     sfVector2f scale;
     sfIntRect rect;
 
-    scale.x = 2;
-    scale.y = 2;
-    pos_obj.x = 700;
-    pos_obj.y = 500;
-    rect.width = 75;
-    rect.height = 75;
+    scale.x = 2, scale.y = 2;
+    pos_obj.x = 700, pos_obj.y = 500;
+    rect.width = 75, rect.height = 75;
     rect.top = 0;
     rect.left = 235;
     texture_obj = sfTexture_createFromFile(
@@ -120,12 +108,9 @@ void draw_level_5(ui_t *ui)
     sfVector2f scale;
     sfIntRect rect;
 
-    scale.x = 2;
-    scale.y = 2;
-    pos_obj.x = 900;
-    pos_obj.y = 500;
-    rect.width = 75;
-    rect.height = 75;
+    scale.x = 2, scale.y = 2;
+    pos_obj.x = 900, pos_obj.y = 500;
+    rect.width = 75, rect.height = 75;
     rect.top = 0;
     rect.left = 315;
     texture_obj = sfTexture_createFromFile(

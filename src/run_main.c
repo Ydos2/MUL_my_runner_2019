@@ -52,12 +52,32 @@ int draw_help(int ac, char **av)
 
 int draw_tuto(int ac, char **av)
 {
-    write(1, "Finite runner created with CSFML.\n\n", 35);
-    write(1, "USAGE\n", 6);
-    write(1, "\t./my_runner map.txt\n\n\n", 23);
-    write(1, "OPTIONS\n", 8);
-    write(1, "\t-t\tprint the tuto and quit\n", 28);
-    write(1, "\t-h\tprint the usage and quit\n\n", 30);
+    write(1, "For play with this game:\n\n", 26);
+    write(1, "BUTTON\n", 6);
+    write(1, "\tSet Skin : Change your character\n", 34);
+    write(1, "\tLevel Selector : Change your level\n\n\n", 38);
     write(1, "USER INTERACTIONS\n", 18);
-    write(1, "\tSPACE_KEY\tjump.\n", 17);
+    write(1, "\tSPACE_KEY\tto jump.\n", 20);
+}
+
+void set_action_event(sfMouseButtonEvent event, link_t *link, ui_t *ui)
+{
+    if (event.x <= 200 && event.x >= 100 &&
+    event.y <= 600 && event.y > 500)
+        link->skin = 0, ui->select_skin = 100;
+    if (event.x <= 400 && event.x >= 300 &&
+    event.y <= 600 && event.y > 500)
+        link->skin = 1, ui->select_skin = 300;
+    if (event.x <= 600 && event.x >= 500 &&
+    event.y <= 600 && event.y > 500)
+        link->skin = 2, ui->select_skin = 500;
+    if (event.x <= 800 && event.x >= 700 &&
+    event.y <= 600 && event.y > 500)
+        link->skin = 3, ui->select_skin = 700;
+    if (event.x <= 1000 && event.x >= 900 &&
+    event.y <= 600 && event.y > 500)
+        link->skin = 4, ui->select_skin = 900;
+    if (event.x <= 950 && event.x >= 750 &&
+    event.y <= 850 && event.y > 750)
+        ui->menu = 1;
 }

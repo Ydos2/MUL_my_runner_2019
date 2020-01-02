@@ -41,9 +41,5 @@ void update_tile_y(map_t *map_struct, ui_t *ui, int nbr_of_obj)
             map_struct->line_8 = 1;
         if (nbr_of_obj == 6)
             ui->obj_actu = 6;
-        if (nbr_of_obj == 7)
-            ui->win = 1;
-        else
-            ui->win = 0;
     }
 }
