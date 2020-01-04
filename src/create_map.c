@@ -55,7 +55,7 @@ char *my_strdupp(char const *src)
     char *res;
 
     res = malloc(sizeof(char) * src_len+1);
-    res[src_len+1] = '\0';
+    res[src_len] = '\0';
     my_strcpyy(res, src);
     return (res);
 }

@@ -11,6 +11,8 @@
 void define_link(link_t *link, ui_t *ui_struct, map_t *map_struct)
 {
     ui_struct->score++;
+    if (ui_struct->score >= 500)
+        move_rect_link_win(link, ui_struct);
     if (ui_struct->seconds > 0.1 && ui_struct->lose != 1) {
         if (link->is_fall == 1)
             move_rect_link_fall(link);
@@ -71,7 +73,20 @@ void set_lose(ui_t *ui_struct)
     ui_struct->menu = 2;
 }
 
-void set_win(ui_t *ui_struct)
+void move_rect_link_win(link_t *link, ui_t *ui)
 {
-    ui_struct->menu = 3;
+    int i = 0;
+
+    ui->lose_move = 1;
+    link->top = 180;
+    if (link->offset != 220 && i == 0) {
+        link->offset = 220;
+        i++;
+    }
+    if (link->offset == 220 && i == 0) {
+        ui->menu = 3;
+        ui->lose_move = 0;
+        link->offset = 0;
+        link->top = 0;
+    }
 }

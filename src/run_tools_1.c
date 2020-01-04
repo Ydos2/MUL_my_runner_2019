@@ -20,6 +20,8 @@ void destroy_obj1(ui_t *ui, map_t *map_struct, link_t *link, obj_t *obj)
 {
     free(map_struct->map);
     free(map_struct);
+    sfSound_stop(ui->empty_sound);
+    sfSound_destroy(ui->empty_sound);
     sfMusic_stop(ui->music_sound);
     sfMusic_destroy(ui->music_sound);
     sfClock_destroy(ui->clock);

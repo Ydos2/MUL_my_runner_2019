@@ -13,11 +13,12 @@ void sound_start(ui_t *ui_struct)
     float volume = 50;
 
     ui_struct->buffer = sfSoundBuffer_createFromFile(
-        "./sound/Cours_Forrest.ogg");
+        "./sound/CF.ogg");
     ui_struct->empty_sound = sfSound_create();
     sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
     sfSound_setVolume(ui_struct->empty_sound, volume);
     sfSound_play(ui_struct->empty_sound);
+    sfSoundBuffer_destroy(ui_struct->buffer);
 }
 
 void sound_die(ui_t *ui_struct)
@@ -29,6 +30,7 @@ void sound_die(ui_t *ui_struct)
     sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
     sfSound_setVolume(ui_struct->empty_sound, volume);
     sfSound_play(ui_struct->empty_sound);
+    sfSoundBuffer_destroy(ui_struct->buffer);
 }
 
 void sound_win(ui_t *ui_struct)
@@ -40,6 +42,7 @@ void sound_win(ui_t *ui_struct)
     sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
     sfSound_setVolume(ui_struct->empty_sound, volume);
     sfSound_play(ui_struct->empty_sound);
+    sfSoundBuffer_destroy(ui_struct->buffer);
 }
 
 void initialise_sound_manager(ui_t *ui_struct)

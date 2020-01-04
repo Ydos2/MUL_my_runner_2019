@@ -5,28 +5,12 @@
 ** frambuffer
 */
 
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/Texture.h>
-#include <SFML/Graphics/Sprite.h>
-#include <SFML/Window/Export.h>
+#include <SFML/Window.h>
 #include <stdlib.h>
 #include <SFML/Config.h>
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
-#include <SFML/System/Export.h>
-#include <SFML/System/Time.h>
-#include <SFML/System/Types.h>
-#include <SFML/Graphics/Transform.h>
-#include <SFML/Graphics/Types.h>
-#include <SFML/System/Vector2.h>
-#include <SFML/Audio/Export.h>
-#include <SFML/Audio/SoundStatus.h>
-#include <SFML/Audio/Types.h>
-#include <SFML/Graphics/FontInfo.h>
-#include <SFML/Graphics/Glyph.h>
-#include <SFML/Graphics/Types.h>
+#include <SFML/System.h>
 #ifndef FRAMEBUFFER_H_
 #define FRAMEBUFFER_H_
 
@@ -161,10 +145,9 @@ void get_map(map_t *map_struct, ui_t *ui, obj_t *obj_struct);
 void init_tile_y(map_t *map_struct);
 void update_tile_y(map_t *map_struct, ui_t *ui, int nbr_of_obj);
 void set_lose(ui_t *ui_struct);
-void set_win(ui_t *ui_struct);
+void move_rect_link_win(link_t *link, ui_t *ui);
 
 void initialise_gravity(link_t *link, map_t *map_struct, ui_t *ui_struct);
-void set_action(ui_t *ui_struct);
 void get_link_pos(link_t *link);
 int set_actu_tile(int i, map_t *map_struct);
 void apply_gravity(link_t *link);
