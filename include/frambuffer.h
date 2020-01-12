@@ -91,6 +91,9 @@ typedef struct ui {
     sfRenderWindow* window;
 } ui_t;
 
+void initialise_game(ui_t *ui_struct, link_t *link
+    , map_t *map_struct, obj_t *obj_struct);
+
 void extend_window_open(ui_t *ui_struct, link_t *link
     , map_t *map_struct, obj_t *obj_struct);
 int draw_help(int ac, char **av);

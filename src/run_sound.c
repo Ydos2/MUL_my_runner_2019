@@ -17,7 +17,6 @@ void sound_jump(ui_t *ui_struct)
     sfSound_setBuffer(ui_struct->empty_sound, ui_struct->buffer);
     sfSound_setVolume(ui_struct->empty_sound, volume);
     sfSound_play(ui_struct->empty_sound);
-    sfSoundBuffer_destroy(ui_struct->buffer);
 }
 
 void music_game(ui_t *ui_struct)

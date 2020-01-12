@@ -41,7 +41,7 @@ MAIN_SRC    =    src/main.c			\
 
 MAIN_OBJ    =    $(MAIN_SRC:.c=.o)	\
 
-CFLAGS    =    -I./include -Wextra --coverage -l csfml-graphics -l csfml-system -l csfml-audio -g3
+CFLAGS    =    -I./include -Wextra --coverage -l csfml-graphics -l csfml-system -l csfml-audio
 
 TARGET    =    my_runner		\
 

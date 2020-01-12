@@ -26,6 +26,7 @@ void main_extend_2(ui_t *ui_struct, link_t *link)
     sfVideoMode mode = {1920, 1080, 32};
 
     ui_struct->clock = sfClock_create();
+    ui_struct->clock_game = sfClock_create();
     ui_struct->window = sfRenderWindow_create(
         mode, "Link RUN!", sfResize | sfClose, NULL);
     ui_struct->quit = 0;
